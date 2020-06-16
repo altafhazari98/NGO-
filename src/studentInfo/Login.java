@@ -41,9 +41,9 @@ public class Login extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         signUp = new javax.swing.JButton();
         clearS = new javax.swing.JButton();
-        jTextField2 = new javax.swing.JTextField();
+        name = new javax.swing.JTextField();
         userName = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
+        phonenumber = new javax.swing.JTextField();
         password = new javax.swing.JPasswordField();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel7 = new javax.swing.JLabel();
@@ -178,7 +178,7 @@ public class Login extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(126, 126, 126))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -189,7 +189,7 @@ public class Login extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
+                                            .addComponent(phonenumber, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
                                             .addComponent(password))
                                         .addGap(126, 126, 126))
                                     .addGroup(layout.createSequentialGroup()
@@ -211,7 +211,7 @@ public class Login extends javax.swing.JFrame {
                             .addComponent(jLabel1)
                             .addComponent(usernamel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(51, 51, 51)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel2)
@@ -228,7 +228,7 @@ public class Login extends javax.swing.JFrame {
                         .addGap(53, 53, 53)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(phonenumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(29, 29, 29)
@@ -290,13 +290,22 @@ public class Login extends javax.swing.JFrame {
            Class.forName("com.mysql.jdbc.Driver");
            Connection myConn=DriverManager.getConnection("jdbc:mysql://donorinfo.colvmrnasyyf.us-east-2.rds.amazonaws.com:3306/donorinfo", "root", "rootcloud");
            try{
+               if("".equals(name.getText()) || "".equals(userName.getText()) || "".equals(password.getText()) || "".equals(phonenumber.getText()))
+           {
+               JOptionPane.showMessageDialog(null," Please enter all the required fields","SIGN UP FAILED",JOptionPane.ERROR_MESSAGE);
+           }
+               else{
            String sql="insert into login values (?,?)";
            PreparedStatement stmt=myConn.prepareStatement(sql);
            stmt.setString(1, userName.getText());
            stmt.setString(2,new String( AES.encrypt(password.getText(), secretKey)));
            stmt.executeUpdate();
+           /*if("".equals(name.getText()) || "".equals(userName.getText()) || "".equals(password.getText()) || "".equals(phonenumber.getText()))
+           {
+               JOptionPane.showMessageDialog(null," Please enter all the required fields","SIGN UP FAILED",JOptionPane.ERROR_MESSAGE);
+           }*/
            JOptionPane.showMessageDialog(null, "Sign Up successfull");
-           myConn.close();
+           myConn.close();}
            }catch(Exception e)
            {
                JOptionPane.showMessageDialog(null,"User name is already used, Please use another userName","SIGN UP FAILED",JOptionPane.ERROR_MESSAGE);
@@ -313,10 +322,10 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_userNameActionPerformed
 
     private void clearSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearSActionPerformed
-           jTextField2.setText("");
+           name.setText("");
             userName.setText("");
             password.setText("");
-            jTextField5.setText("");
+            phonenumber.setText("");
     }//GEN-LAST:event_clearSActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -374,10 +383,10 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JButton login;
+    private javax.swing.JTextField name;
     private javax.swing.JPasswordField password;
+    private javax.swing.JTextField phonenumber;
     private javax.swing.JButton signUp;
     private javax.swing.JTextField userName;
     private javax.swing.JTextField usernamel;
