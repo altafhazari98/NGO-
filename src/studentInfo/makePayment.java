@@ -34,7 +34,7 @@ public class makePayment extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        phoneNumber = new javax.swing.JTextField();
+        amount = new javax.swing.JTextField();
         name = new javax.swing.JTextField();
         card = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
@@ -113,7 +113,7 @@ public class makePayment extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 133, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(phoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(amount, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(name, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
                                             .addComponent(card))
@@ -133,7 +133,7 @@ public class makePayment extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(phoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(amount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -161,17 +161,21 @@ public class makePayment extends javax.swing.JFrame {
            Class.forName("com.mysql.jdbc.Driver");
            Connection myConn=DriverManager.getConnection("jdbc:mysql://donorinfo.colvmrnasyyf.us-east-2.rds.amazonaws.com:3306/donorinfo", "root", "rootcloud");
            try{
+               if("".equals(amount.getText()) || "".equals(name.getText()) || "".equals(card.getText()) || "".equals(grd.getSelectedItem().toString()))
+           {
+               JOptionPane.showMessageDialog(null," Please enter all the required fields","PAYMENT FAILED",JOptionPane.ERROR_MESSAGE);
+           }else{
            String sql="insert into donor_infonb values (?,?,?,?,?)";
            PreparedStatement stmt=myConn.prepareStatement(sql);
            stmt.setString(1, UUID.randomUUID().toString());
-           stmt.setString(2,phoneNumber.getText());
+           stmt.setString(2,amount.getText());
            stmt.setString(3,name.getText());
            stmt.setString(4,new String( AES.encrypt(card.getText(), secretKey)));
            String organisation=grd.getSelectedItem().toString();
            stmt.setString(5, organisation);
            stmt.executeUpdate();
            JOptionPane.showMessageDialog(null, "Payment successfull");
-           myConn.close();
+           myConn.close();}
            }catch(Exception e){
                JOptionPane.showMessageDialog(null,"Donor_Id alreday exist please try a new one","DONATION FAILED",JOptionPane.ERROR_MESSAGE);
            }
@@ -183,7 +187,7 @@ public class makePayment extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         
-        phoneNumber.setText("");
+        amount.setText("");
         name.setText("");
         card.setText("");
         grd.setSelectedIndex(0); 
@@ -235,6 +239,7 @@ public class makePayment extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField amount;
     private javax.swing.JTextField card;
     private javax.swing.JComboBox<String> grd;
     private javax.swing.JButton jButton1;
@@ -245,6 +250,5 @@ public class makePayment extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField name;
-    private javax.swing.JTextField phoneNumber;
     // End of variables declaration//GEN-END:variables
 }
