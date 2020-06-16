@@ -38,7 +38,7 @@ public class donorDisplay extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        donorPhone = new javax.swing.JTextField();
+        amount = new javax.swing.JTextField();
         name = new javax.swing.JTextField();
         course = new javax.swing.JTextField();
         grd = new javax.swing.JTextField();
@@ -142,7 +142,7 @@ public class donorDisplay extends javax.swing.JFrame {
                         .addGap(188, 188, 188)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(name, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                            .addComponent(donorPhone, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                            .addComponent(amount, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
                             .addComponent(course, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
                             .addComponent(grd, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
                             .addComponent(donorId)))
@@ -170,7 +170,7 @@ public class donorDisplay extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(donorPhone, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(amount, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -210,7 +210,7 @@ public class donorDisplay extends javax.swing.JFrame {
            stmt.setString(1, donorId.getText());
            ResultSet rs=stmt.executeQuery();
            if(rs.next()){
-               donorPhone.setText(rs.getString("amount"));
+               amount.setText(rs.getString("amount"));
                name.setText(rs.getString("name"));
                course.setText(rs.getString("card"));
                grd.setText(rs.getString("organisation"));
@@ -227,7 +227,7 @@ public class donorDisplay extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         donorId.setText("");
-        donorPhone.setText("");
+        amount.setText("");
         name.setText("");
         course.setText("");
         grd.setText("");
@@ -286,9 +286,9 @@ public class donorDisplay extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField amount;
     private javax.swing.JTextField course;
     private javax.swing.JTextField donorId;
-    private javax.swing.JTextField donorPhone;
     private javax.swing.JTextField grd;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

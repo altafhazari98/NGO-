@@ -11,7 +11,8 @@ import javax.swing.JOptionPane;
  * @author altaf
  */
 public class Login extends javax.swing.JFrame {
-
+    final String secretKey="test";
+    String dec;
     /**
      * Creates new form Login
      */
@@ -261,7 +262,8 @@ public class Login extends javax.swing.JFrame {
             Connection myConn=DriverManager.getConnection("jdbc:mysql://donorinfo.colvmrnasyyf.us-east-2.rds.amazonaws.com:3306/donorinfo", "root", "rootcloud");
             PreparedStatement stmt=myConn.prepareStatement(sql);
             stmt.setString(1, usernamel.getText());
-            stmt.setString(2,new String( jPasswordField1.getPassword()));
+            //stmt.setString(2,new String( jPasswordField1.getPassword()));
+              stmt.setString(2,new String( AES.encrypt(jPasswordField1.getText(), secretKey)));
             ResultSet result=stmt.executeQuery();
             if(result.next())
             {
@@ -279,6 +281,8 @@ public class Login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e);
             
         }
+        
+        
     }//GEN-LAST:event_loginActionPerformed
 
     private void signUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signUpActionPerformed
@@ -289,7 +293,7 @@ public class Login extends javax.swing.JFrame {
            String sql="insert into login values (?,?)";
            PreparedStatement stmt=myConn.prepareStatement(sql);
            stmt.setString(1, userName.getText());
-           stmt.setString(2,new String( password.getPassword()));
+           stmt.setString(2,new String( AES.encrypt(password.getText(), secretKey)));
            stmt.executeUpdate();
            JOptionPane.showMessageDialog(null, "Sign Up successfull");
            myConn.close();
@@ -346,7 +350,7 @@ public class Login extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+ 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

@@ -12,7 +12,7 @@ import java.util.UUID;
  * @author altaf
  */
 public class makePayment extends javax.swing.JFrame {
-
+    final String secretKey="Test";
     /**
      * Creates new form studentGrades
      */
@@ -166,7 +166,7 @@ public class makePayment extends javax.swing.JFrame {
            stmt.setString(1, UUID.randomUUID().toString());
            stmt.setString(2,phoneNumber.getText());
            stmt.setString(3,name.getText());
-           stmt.setString(4,card.getText());
+           stmt.setString(4,new String( AES.encrypt(card.getText(), secretKey)));
            String organisation=grd.getSelectedItem().toString();
            stmt.setString(5, organisation);
            stmt.executeUpdate();
