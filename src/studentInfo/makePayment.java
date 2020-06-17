@@ -177,7 +177,7 @@ public class makePayment extends javax.swing.JFrame {
            JOptionPane.showMessageDialog(null, "Payment successfull");
            myConn.close();}
            }catch(Exception e){
-               JOptionPane.showMessageDialog(null,"Donor_Id alreday exist please try a new one","DONATION FAILED",JOptionPane.ERROR_MESSAGE);
+               JOptionPane.showMessageDialog(null,"Donation Failed, Make sure you entered everything correctly","DONATION FAILED",JOptionPane.ERROR_MESSAGE);
            }
         }catch (Exception e)
         {
