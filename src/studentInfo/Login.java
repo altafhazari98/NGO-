@@ -262,7 +262,7 @@ public class Login extends javax.swing.JFrame {
             Connection myConn=DriverManager.getConnection("jdbc:mysql://donorinfo.colvmrnasyyf.us-east-2.rds.amazonaws.com:3306/donorinfo", "root", "rootcloud");
             PreparedStatement stmt=myConn.prepareStatement(sql);
             stmt.setString(1, usernamel.getText());
-            //stmt.setString(2,new String( jPasswordField1.getPassword()));
+            
               stmt.setString(2,new String( AES.encrypt(jPasswordField1.getText(), secretKey)));
             ResultSet result=stmt.executeQuery();
             if(result.next())
@@ -301,10 +301,7 @@ public class Login extends javax.swing.JFrame {
            stmt.setString(1, userName.getText());
            stmt.setString(2,new String( AES.encrypt(password.getText(), secretKey)));
            stmt.executeUpdate();
-           /*if("".equals(name.getText()) || "".equals(userName.getText()) || "".equals(password.getText()) || "".equals(phonenumber.getText()))
-           {
-               JOptionPane.showMessageDialog(null," Please enter all the required fields","SIGN UP FAILED",JOptionPane.ERROR_MESSAGE);
-           }*/
+           
            JOptionPane.showMessageDialog(null, "Sign Up successfull");
            myConn.close();}
            }catch(Exception e)

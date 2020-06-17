@@ -5,6 +5,7 @@
  */
 package studentInfo;
 import java.sql.*;
+import java.util.Random;
 import javax.swing.JOptionPane;
 import java.util.UUID;
 /**
@@ -158,6 +159,7 @@ public class makePayment extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try{
+            Random rand = new Random(); 
            Class.forName("com.mysql.jdbc.Driver");
            Connection myConn=DriverManager.getConnection("jdbc:mysql://donorinfo.colvmrnasyyf.us-east-2.rds.amazonaws.com:3306/donorinfo", "root", "rootcloud");
            try{
@@ -167,6 +169,7 @@ public class makePayment extends javax.swing.JFrame {
            }else{
            String sql="insert into donor_infonb values (?,?,?,?,?)";
            PreparedStatement stmt=myConn.prepareStatement(sql);
+           
            stmt.setString(1, UUID.randomUUID().toString());
            stmt.setString(2,amount.getText());
            stmt.setString(3,name.getText());

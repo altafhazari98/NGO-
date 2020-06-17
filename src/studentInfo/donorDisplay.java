@@ -195,7 +195,7 @@ public class donorDisplay extends javax.swing.JFrame {
            Connection myConn=DriverManager.getConnection("jdbc:mysql://donorinfo.colvmrnasyyf.us-east-2.rds.amazonaws.com:3306/donorinfo", "root", "rootcloud");
            String sql="select * from donor_infonb where donor_id=?";
            PreparedStatement stmt=myConn.prepareStatement(sql);
-          // stmt.setInt(1,Integer.parseInt(rollNumber.getText()));
+          
            stmt.setString(1, donorId.getText());
            ResultSet rs=stmt.executeQuery();
            if(rs.next()){
@@ -272,6 +272,7 @@ public class donorDisplay extends javax.swing.JFrame {
                 new donorDisplay().setVisible(true);
             }
         });
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
