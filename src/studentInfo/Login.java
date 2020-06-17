@@ -267,6 +267,7 @@ public class Login extends javax.swing.JFrame {
             ResultSet result=stmt.executeQuery();
             if(result.next())
             {
+               
                 JOptionPane.showMessageDialog(null, "Welcome "+ usernamel.getText(),"Login Successful", JOptionPane.PLAIN_MESSAGE);
                 new makePayment().setVisible(true);
                 dispose();

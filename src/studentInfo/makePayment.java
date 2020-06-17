@@ -80,7 +80,7 @@ public class makePayment extends javax.swing.JFrame {
             }
         });
 
-        grd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Organisation", "Meer Foundation", "Being Human", "Share The Meal", "WorldLeader", "KhalsaAid" }));
+        grd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Meer Foundation", "Being Human", "Share The Meal", "WorldLeader", "KhalsaAid" }));
         grd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 grdActionPerformed(evt);

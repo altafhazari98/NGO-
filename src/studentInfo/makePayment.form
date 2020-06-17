@@ -181,13 +181,12 @@
     <Component class="javax.swing.JComboBox" name="grd">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="6">
-            <StringItem index="0" value="Select Organisation"/>
-            <StringItem index="1" value="Meer Foundation"/>
-            <StringItem index="2" value="Being Human"/>
-            <StringItem index="3" value="Share The Meal"/>
-            <StringItem index="4" value="WorldLeader"/>
-            <StringItem index="5" value="KhalsaAid"/>
+          <StringArray count="5">
+            <StringItem index="0" value="Meer Foundation"/>
+            <StringItem index="1" value="Being Human"/>
+            <StringItem index="2" value="Share The Meal"/>
+            <StringItem index="3" value="WorldLeader"/>
+            <StringItem index="4" value="KhalsaAid"/>
           </StringArray>
         </Property>
       </Properties>
