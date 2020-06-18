@@ -98,10 +98,11 @@ public class Admin extends javax.swing.JFrame {
                             .addComponent(adminp)
                             .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(192, 192, 192)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton3)
-                            .addComponent(jLabel3))))
+                        .addGap(217, 217, 217)
+                        .addComponent(jLabel3))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(184, 184, 184)
+                        .addComponent(jButton3)))
                 .addContainerGap(106, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -117,13 +118,13 @@ public class Admin extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(adminp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(128, 128, 128)
+                .addGap(74, 74, 74)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addComponent(jButton3)
-                .addGap(21, 21, 21))
+                .addGap(54, 54, 54))
         );
 
         pack();

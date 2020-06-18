@@ -48,6 +48,7 @@ public class Totals extends javax.swing.JFrame {
         stm = new javax.swing.JTextField();
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,6 +60,12 @@ public class Totals extends javax.swing.JFrame {
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        total.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                totalActionPerformed(evt);
             }
         });
 
@@ -92,6 +99,12 @@ public class Totals extends javax.swing.JFrame {
             }
         });
 
+        ka.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kaActionPerformed(evt);
+            }
+        });
+
         jButton5.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jButton5.setText("World Leader");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -105,6 +118,12 @@ public class Totals extends javax.swing.JFrame {
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
+            }
+        });
+
+        stm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stmActionPerformed(evt);
             }
         });
 
@@ -124,47 +143,52 @@ public class Totals extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setText("Click on the buttons below to find amount donated ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(93, 93, 93)
-                        .addComponent(jLabel1))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(60, 60, 60)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(60, 60, 60)
+                                .addComponent(jButton7)
+                                .addGap(241, 241, 241)
+                                .addComponent(jButton8))
+                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jButton2)
                                     .addComponent(jButton1)
                                     .addComponent(jButton3)
+                                    .addComponent(jButton2)
                                     .addComponent(jButton4)
-                                    .addComponent(jButton5)
-                                    .addComponent(jButton6)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(85, 85, 85)
-                                .addComponent(jButton7)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButton6)
+                                    .addComponent(jButton5))
+                                .addGap(117, 117, 117)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(mf, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(bh, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(ka, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(stm, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(wl, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(total, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(139, 139, 139)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton8)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(total, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
-                                .addComponent(mf)
-                                .addComponent(bh)
-                                .addComponent(ka)
-                                .addComponent(stm)
-                                .addComponent(wl)))))
-                .addContainerGap(97, Short.MAX_VALUE))
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1))))
+                .addContainerGap(122, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(41, 41, 41)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(mf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -184,15 +208,15 @@ public class Totals extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton5)
                     .addComponent(wl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(54, 54, 54)
+                .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton7)
                     .addComponent(jButton8))
-                .addGap(22, 22, 22))
+                .addGap(85, 85, 85))
         );
 
         pack();
@@ -314,6 +338,18 @@ public class Totals extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton8ActionPerformed
 
+    private void kaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_kaActionPerformed
+
+    private void totalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_totalActionPerformed
+
+    private void stmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stmActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_stmActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -360,6 +396,7 @@ public class Totals extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField ka;
     private javax.swing.JTextField mf;
     private javax.swing.JTextField stm;
