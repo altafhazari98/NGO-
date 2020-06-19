@@ -240,6 +240,7 @@ public class donorDisplay extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         new Admin().setVisible(true);
         dispose();
+        JOptionPane.showMessageDialog(null," You have been signed out","SIGNED OUT",JOptionPane.PLAIN_MESSAGE);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
