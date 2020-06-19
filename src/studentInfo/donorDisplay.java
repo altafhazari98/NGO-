@@ -47,6 +47,7 @@ public class donorDisplay extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         donorId = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -115,6 +116,14 @@ public class donorDisplay extends javax.swing.JFrame {
             }
         });
 
+        jButton5.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        jButton5.setText("View Donors Info");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -145,11 +154,14 @@ public class donorDisplay extends javax.swing.JFrame {
                         .addGap(92, 92, 92)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(97, 97, 97)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(185, 185, 185)
-                        .addComponent(jButton4)))
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(120, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -177,9 +189,11 @@ public class donorDisplay extends javax.swing.JFrame {
                     .addComponent(jButton1)
                     .addComponent(jButton2)
                     .addComponent(jButton3))
-                .addGap(49, 49, 49)
-                .addComponent(jButton4)
-                .addGap(37, 37, 37))
+                .addGap(58, 58, 58)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton4)
+                    .addComponent(jButton5))
+                .addGap(28, 28, 28))
         );
 
         pack();
@@ -193,21 +207,22 @@ public class donorDisplay extends javax.swing.JFrame {
         try{
            Class.forName("com.mysql.jdbc.Driver");
            Connection myConn=DriverManager.getConnection("jdbc:mysql://donorinfo.colvmrnasyyf.us-east-2.rds.amazonaws.com:3306/donorinfo", "root", "rootcloud");
-           String sql="select * from donor_infonb where donor_id=?";
+           String sql="select * from donor_infonb";
            PreparedStatement stmt=myConn.prepareStatement(sql);
           
-           stmt.setString(1, donorId.getText());
+           //stmt.setString(1, donorId.getText());
            ResultSet rs=stmt.executeQuery();
            if(rs.next()){
+               donorId.setText(rs.getString("donor_id"));
                amount.setText(rs.getString("amount"));
                name.setText(rs.getString("name"));
               
                grd.setText(rs.getString("organisation"));
            }
-           else
+          /* else
            {
                JOptionPane.showMessageDialog(null,"Record not found");
-           }
+           }*/
            myConn.close();
         }catch(Exception e){
              JOptionPane.showMessageDialog(null,e);
@@ -232,6 +247,12 @@ public class donorDisplay extends javax.swing.JFrame {
                 dispose();
             
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        new List().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     
     
@@ -283,6 +304,7 @@ public class donorDisplay extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
